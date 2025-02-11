@@ -10,7 +10,7 @@ import {
 import { Input } from "@/components/ui/input"
 import { useFormContext } from 'react-hook-form'
 import { SelectItem,Select,SelectTrigger,SelectContent,SelectValue } from './ui/select'
-import ReactDatePicker from "react-datepicker";
+import DatePicker from "react-datepicker";
 import calender from '../assets/form_icons/calendar.svg' 
 const RenderField = ({ props, field }) => {
   const { control, name, label, placeholder, iconSrc, fieldType, onChange, value } = props
@@ -44,22 +44,32 @@ const RenderField = ({ props, field }) => {
       )
       case 'date_picker':
       return (
-        <div className="flex rounded-md border border-dark-500 bg-dark-400">
-          <img
+        <div className="flex ">
+          {/* <img
             src={calender}
             height={24}
             width={24}
             alt="user"
             className="ml-2"
-          />
+          /> */}
           <FormControl>
-            <ReactDatePicker
+            <DatePicker
               showTimeSelect={props.showTimeSelect ?? false}
-              selected={field.value}
-              onChange={(date) => field.onChange(date)}
+              showTimeSelectOnly
+                                    timeIntervals={60}
+                                    timeCaption="Time"
+                                    dateFormat="h:mm aa"
+              selected={field.value || new Date()}
+              onChange={(date) => {
+                field.onChange(date)
+                if(props.onChange){
+                  props.onChange(date)
+                }
+              }}
               timeInputLabel="Time:"
-              dateFormat={props.dateFormat ?? "MM/dd/yyyy"}
+              // dateFormat={props.dateFormat ?? "MM/dd/yyyy"}
               wrapperClassName="date-picker"
+              className='text-[14px] text-center border-white ml-4'
             />
           </FormControl>
         </div>
