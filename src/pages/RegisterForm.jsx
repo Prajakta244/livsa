@@ -71,7 +71,7 @@ const RegisterForm = () => {
     }
   }
   return (
-    <div className='md:w-[850px] h-full  mx-auto shadow-xl rounded-2xl pb-2 bg-white'>
+    <div className='md:w-[850px] h-full  mx-auto shadow-xl rounded-2xl pb-2 bg-white overflow-hidden'>
       <div className='container horizontal mt-5 h-full'>
         <Stepper steps={steps} currentStep={currentStep} />
         <div className='mb-10 p-10'>
