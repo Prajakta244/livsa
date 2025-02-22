@@ -7,7 +7,6 @@ const CustomModal = ({ open, onClose, children }) => {
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: 600,
     bgcolor: 'background.paper',
     border: '1px solid #000',
     boxShadow: 8,
@@ -28,7 +27,7 @@ const CustomModal = ({ open, onClose, children }) => {
           },
         }}
       >
-        <Box sx={style}>
+        <Box sx={style} className='w-[400px] md:w-[600px]'>
         {/* <Fade in={open}> */}
           {children}
           </Box>

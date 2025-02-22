@@ -23,7 +23,11 @@ export default {
   			lg: 'var(--radius)',
   			md: 'calc(var(--radius) - 2px)',
   			sm: 'calc(var(--radius) - 4px)'
-  		}
+  		},
+		screens:{
+			'1084':'1084px',
+			'1220':'1220px'
+		}
   	}
   },
   plugins: [require("tailwindcss-animate")],

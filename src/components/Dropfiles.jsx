@@ -19,7 +19,7 @@ const Dropfiles = ({ className, setfile, uplFile, form, isMultifile, field }) =>
     const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop })
     return (
         <>
-            <div className='w-80 ml-56'>
+            <div className='w-80'>
                 {(uplFile.length && !isMultifile) ? <div className='flex flex-col items-center relative rounded-md shadow-lg mb-10'><img
                     src={uplFile.length && uplFile[0].preview}
                     alt="card-image"
@@ -48,11 +48,10 @@ const Dropfiles = ({ className, setfile, uplFile, form, isMultifile, field }) =>
                         <h2 className='text-lg sm:text-xl tracking-wide'>Preview</h2>
                         <ul className='mt-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-10'>
                             {uplFile && uplFile.map((file, i) => (
-                                <li key={`${file.filename}-${i}`} className='relative h-32 rounded-md shadow-lg'>
+                                <li key={`${file.filename}-${i}`} className='relative h-20 xl:h-32 rounded-md shadow-lg'>
                                     <img
                                         src={file.preview}
                                         alt="card-image"
-
                                         class="h-full w-full object-contain rounded-md"
                                     />
                                     <button

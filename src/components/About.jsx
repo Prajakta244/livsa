@@ -10,7 +10,7 @@ import { MdEmail, MdMedicalServices } from "react-icons/md";
 import { PiStudentFill } from "react-icons/pi";
 import { specialityList } from '../constants/index'
 import { SelectItem } from './ui/select'
-import CustomModal from './CustomModal';
+import CustomModal from './CustomModal'
 const About = () => {
   const { form } = useContext(StepperContext)
   const [isModalOpen, setModalOpen] = useState(false);
