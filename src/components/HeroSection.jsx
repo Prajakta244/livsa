@@ -19,12 +19,12 @@ const HeroSection = () => {
                 </p>
             </div>
             <div class='flex justify-around items-center flex-col 1084:flex-col 1220:flex-row 1084:items-center 1220:items-stretch md:mt-10'>
-                <div class=" flex justify-center flex-row  my-6 bg-white shadow-sm border border-slate-200 rounded-lg w-[350px] xl:w-[500px]" >
+                <div class=" flex justify-center flex-row  my-6 bg-white shadow-sm border border-slate-200 rounded-lg w-[350px] md:w-[500px]" >
                     <div class=" p-2.5 xl:w-2/5 shrink-0 overflow-hidden">
                         <img
                             src={patient}
                             alt="card-image"
-                            class="h-[150px] w-[150px] rounded-lg xl:rounded-lg object-cover sm:w-[200px]"
+                            class="h-[150px] w-[150px]   rounded-lg xl:rounded-lg object-cover sm:w-[200px]"
                         />
                     </div>
                     <div class="md:p-6 p-3 hover:bg-primaryGrad rounded-lg" >
@@ -36,7 +36,7 @@ const HeroSection = () => {
                         </p>
                     </div>
                 </div>
-                <div class=" flex flex-row  my-6 bg-white shadow-sm border border-slate-200 rounded-lg w-[350px] xl:w-[500px]">
+                <div class=" flex flex-row  my-6 bg-white shadow-sm border border-slate-200 rounded-lg w-[350px] md:w-[500px]">
                     <div class=" p-2.5 xl:w-2/5 shrink-0 overflow-hidden">
                         <img
                             src={doctor}
