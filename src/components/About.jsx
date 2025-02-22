@@ -126,7 +126,7 @@ const About = () => {
           <section className='mb-4'>
             <h2 className='text-lg sm:text-xl tracking-wide'>Receptionist to see live patient booking</h2>
           </section>
-          <div className='flex flex-col w-[375px] lg:flex-row'>
+          <div className='flex flex-col md:w-[375px] lg:flex-row'>
             <CustomFormField control={form.control}
               fieldType='input'
               name='avg_time'
