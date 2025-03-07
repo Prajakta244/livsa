@@ -16,7 +16,7 @@ const Dropfiles = ({ className, setfile, uplFile, form, isMultifile, field }) =>
     const removeFile = name => {
         setfile(files => files.filter(file => file.filename !== name))
     }
-    const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop })
+    const { getRootProps, getInputProps, isDragActive } = useDropzone({ accept: "image/*",onDrop })
     return (
         <>
             <div className='w-80'>

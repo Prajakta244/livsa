@@ -1,5 +1,5 @@
 import React, { useState,useContext } from 'react'
-import { Modal,Box } from '@mui/material';
+import { Modal,Box,Backdrop } from '@mui/material';
 // import Box from '@mui/material';
 const CustomModal = ({ open, onClose, children }) => {
   const style = {
@@ -20,10 +20,15 @@ const CustomModal = ({ open, onClose, children }) => {
         open={open}
         onClose={onClose}
         closeAfterTransition
+        // BackdropComponent={Backdrop}
+        //     BackdropProps={{
+        //         style: { backgroundColor: "white" }, // White backdrop
+        //     }}
         // slots={{ backdrop: Backdrop }}
         slotProps={{
           backdrop: {
             timeout: 500,
+            // style: { backgroundColor: "white" }
           },
         }}
       >

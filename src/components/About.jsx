@@ -11,8 +11,10 @@ import { PiStudentFill } from "react-icons/pi";
 import { specialityList } from '../constants/index'
 import { SelectItem } from './ui/select'
 import CustomModal from './CustomModal'
+import { formSchema } from '../lib/validations'
 const About = () => {
-  const { form } = useContext(StepperContext)
+  const { form,setSchema } = useContext(StepperContext)
+  setSchema(formSchema)
   const [isModalOpen, setModalOpen] = useState(false);
   return (
     <Form {...form}>

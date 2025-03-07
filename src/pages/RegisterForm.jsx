@@ -10,13 +10,19 @@ import { formSchema } from '../lib/validations'
 import { z } from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
-import { useLocation,useNavigate } from "react-router-dom"
+import { useLocation, useNavigate } from "react-router-dom"
+import { useUploadFormDataMutation } from '@/state/api'
+import CustomModal from '@/components/CustomModal'
+import Register_success from '@/components/Register_success'
 const RegisterForm = () => {
+  const [uploadFormData] = useUploadFormDataMutation()
   const navigate = useNavigate()
   const location = useLocation()
   const { pathname } = location
   const [currentStep, setCurrentStep] = useState(1)
   const [userData, setUserData] = useState('')
+  const [isModalOpen, setModalOpen] = useState(false);
+  const [modalData, setModalData] = useState({ name: '', email_id: '' })
   const [formState, setFormState] = useState('')
   const [finalData, setFinalData] = useState('')
   const [schema, setSchema] = useState(z.object({}))
@@ -41,8 +47,37 @@ const RegisterForm = () => {
         return <Images />
     }
   }
-  const handleFormSubmission = (data, direction) => {
+  const handleFormSubmission = async (data, direction) => {
     console.log('Form submitted:', data, direction); // Form data from the child component
+    // console.log(' currentStep', currentStep)
+    if (currentStep == steps.length) {
+      const formData = new FormData()
+      console.log(data.name)
+      formData.append('name', data.name)
+      formData.append('email_id', data.email)
+      formData.append('mobile_number', data.phone_number)
+      formData.append('receptionist_mobile', data.clinic_number)
+      formData.append('city', data.email)
+      formData.append('full_address', data.address)
+      formData.append('state', data.state)
+      formData.append('days_and_timings', JSON.stringify(data.weekDayObj))
+      formData.append('speciality', data.speciality)
+      formData.append('hospital_name', data.clinic)
+      formData.append('qualification', data.qualification)
+      formData.append('doctor_photo', data.docProfile[0])
+      formData.append('password', '')
+      data.hospImages.forEach(file => {
+        formData.append('hospital_photos', file)
+      })
+      // const res = await uploadFormData(formData).unwrap()
+      // console.log("Upload successful!",res);
+      // if(res.status !== 'success'){
+      
+      setModalOpen(true)
+      console.log(modalData)
+      // }
+
+    }
     let newStep = currentStep
     direction === 'next' ? newStep++ : newStep--
     newStep > 0 && newStep <= steps.length && setCurrentStep(newStep)
@@ -50,14 +85,17 @@ const RegisterForm = () => {
   const onError = (errors) => {
     console.log('Validation errors:', errors);
   };
-  const handleClick = async (direction,currentStep) => {
-    if(currentStep == 1 && direction=='back' ){
+  const handleClick = async (direction, currentStep) => {
+    if (currentStep == 1 && direction == 'back') {
       navigate('/register')
     }
     return form.handleSubmit((data) => {
       console.log('form values', form.getValues());
       // console.log('Custom Param:', direction);
-      handleFormSubmission(data, direction)
+      if(currentStep == 1){
+        setModalData({...modalData,name:form.getValues().name,email_id:form.getValues().email})
+      }
+      handleFormSubmission(form.getValues(), direction)
     })();
     console.log('get values')
     const result = formSchema.safeParse(userData); // Manually validate data
@@ -81,6 +119,12 @@ const RegisterForm = () => {
         </div>
       </div>
       <StepperControl steps={steps} currentStep={currentStep} handleClick={handleClick} />
+      <CustomModal open={isModalOpen} onClose={() => setModalOpen(false)} handleOpen={setModalOpen} children={
+        <div>
+          <Register_success data={modalData}/>
+        </div>
+      }
+         />
     </div>
   )
 }
