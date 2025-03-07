@@ -9,12 +9,15 @@ import RegisterForm from './pages/RegisterForm.jsx'
 import { configureStore } from '@reduxjs/toolkit';
 import { api } from './state/api'
 import { Provider } from 'react-redux'
+import DoctorInfo from './pages/DoctorInfo'
+import AppointmentDetails from './components/AppointmentDetails'
 const store = configureStore({
   reducer: {
     [api.reducerPath]:api.reducer
   },
   middleware:(getDefault) => getDefault().concat(api.middleware)
 })
+
 createRoot(document.getElementById('root')).render(
   <Provider store={store}>
   <BrowserRouter>
@@ -25,6 +28,8 @@ createRoot(document.getElementById('root')).render(
           <Route path='/login' element={<Login/>}/>
           <Route path='/register-clinic' element={<RegisterForm/>}/>
           <Route path='/register-hospital' element={<RegisterForm/>}/>
+          <Route path='/doctor-info/:docId' element={<DoctorInfo/>}/>
+          <Route path='/appointment-details' element={<AppointmentDetails/>}/>
       </Routes>
   </BrowserRouter>
   </Provider>
