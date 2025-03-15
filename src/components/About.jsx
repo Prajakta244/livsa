@@ -129,13 +129,13 @@ const About = () => {
             <h2 className='text-lg sm:text-xl tracking-wide'>Receptionist to see live patient booking</h2>
           </section>
           <div className='flex flex-col md:w-[375px] lg:flex-row'>
-            <CustomFormField control={form.control}
-              fieldType='input'
-              name='avg_time'
-              label='Per visit time'
-              placeholder='Average time for one patient (in minute)'
-              iconSrc={<FaBusinessTime className='absolute ml-2' size={17} color='grey' />}
-            />
+          <CustomFormField control={form.control}
+            fieldType='input'
+            name='receptionist_number'
+            label='Phone Number'
+            placeholder='Receptionist Mobile Number'
+            iconSrc={<FaPhoneAlt className='absolute ml-2' size={15} color='grey' />}
+          />
           </div>
         </div>
       </form>

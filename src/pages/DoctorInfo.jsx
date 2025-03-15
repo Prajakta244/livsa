@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { useMediaQuery } from 'react-responsive';
+// import { useMediaQuery } from 'react-responsive';
 import doctor from '../assets/doc1.jpg'
 import hosp_image1 from '../assets/hosp_image1.jpg'
 import hosp_image2 from '../assets/hosp_image2.jpg'
@@ -14,6 +14,8 @@ import { FormControl, InputLabel, Select, MenuItem, Box } from '@mui/material';
 import { useNavigate } from 'react-router-dom'
 import HowToRegIcon from '@mui/icons-material/HowToReg';
 import PendingActionsIcon from '@mui/icons-material/PendingActions';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import CancelIcon from '@mui/icons-material/Cancel';
 import Navbar from '@/components/Navbar';
 
 const ChildElement = ({ timeline, setTimeline }) => {
@@ -122,7 +124,7 @@ const DoctorInfo = () => {
   ];
 
   patientData.forEach(data => {
-    data.action = data.action == 'done' ? <HowToRegIcon sx={{ color: 'green' }} /> : <PendingActionsIcon sx={{ color: 'red' }} />
+    data.action = data.action == 'done' ? <CheckCircleIcon sx={{ color: 'green',fontSize:19 }} /> : <CancelIcon sx={{ color: 'red',fontSize:19 }} />
   })
 
 
@@ -138,7 +140,7 @@ const DoctorInfo = () => {
   return (
     <><Navbar />
       <div className='flex flex-col items-center'>
-        <div className='flex flex-col md:flex-row md:gap-10 gap-3  pt-10'>
+        <div className='flex flex-col md:flex-row md:gap-10 gap-3  pt-10 items-center'>
           <div className='flex w-[250px] md:w-[500px] bg-white border border-gray-200 rounded-lg shadow-sm flex-col md:flex-row h-[340px] md:h-48 mt-2 hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 items-center md:items-start'>
             <img
               src={doctor}
@@ -152,7 +154,8 @@ const DoctorInfo = () => {
             </div>
           </div>
           <div class="md:border-l md:border-gray-300 md:h-52"></div>
-          <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700"></hr>
+          {/* <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700"></hr> */}
+          <hr class="flex md:hidden w-56 h-1 mx-auto my-4 bg-gray-100 border-0 rounded-sm md:my-10 dark:bg-gray-700" />
           <div className='flex flex-col w-[300px]'>
             <h5 class="mb-2 text-lg font-medium  text-gray-900">Address</h5>
             <p class="mb-3 font-normal text-gray-700 text-[14px]">John Doe 1234 Elm Street Springfield, IL 62704 United States</p>
@@ -163,9 +166,10 @@ const DoctorInfo = () => {
               <li className='text-[14px]'>service 3</li>
             </ul>
           </div>
-          <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700"></hr>
+          {/* <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700"></hr> */}
+          <hr class="flex md:hidden w-56 h-1 mx-auto my-4 bg-gray-100 border-0 rounded-sm md:my-10 dark:bg-gray-700" />
         </div>
-        <div className='flex items-center '>
+        <div className='flex items-center pt-8'>
           <div className='flex w-[280px] md:w-[950px]'>
             {/* test */}
             <MdChevronLeft className='opacity-50 cursor-pointer hover:opacity-100 mt-[66px]' onClick={slideLeft} size={40} />
@@ -208,7 +212,7 @@ const DoctorInfo = () => {
             <MdChevronRight className='opacity-50 cursor-pointer hover:opacity-100 mt-[66px]' onClick={slideRight} size={40} />
           </div>
         </div>
-        <hr class="w-48 h-1 mx-auto my-4 bg-gray-100 border-0 rounded-sm md:my-10 dark:bg-gray-700" />
+        <hr class="w-56 h-1 mx-auto my-4 bg-gray-100 border-0 rounded-sm md:my-10 dark:bg-gray-700" />
         <div className='flex items-center flex-col'>
           <h3 class="hidden md:flex text-3xl font-bold dark:text-white">Appointment Details</h3>
           <button

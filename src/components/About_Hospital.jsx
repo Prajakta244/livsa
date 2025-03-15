@@ -123,9 +123,10 @@ const About_Hospital = () => {
           <section className='mb-4'>
             <h2 className='text-lg sm:text-xl tracking-wide'>Receptionist to see live patient booking</h2>
           </section>
-          <div className='flex flex-col md:w-[375px] lg:flex-row'><CustomFormField control={form.control}
+          <div className='flex flex-col md:w-[375px] lg:flex-row'>
+            <CustomFormField control={form.control}
             fieldType='input'
-            name='clinic_number'
+            name='receptionist_number'
             label='Phone Number'
             placeholder='Receptionist Mobile Number'
             iconSrc={<FaPhoneAlt className='absolute ml-2' size={15} color='grey' />}

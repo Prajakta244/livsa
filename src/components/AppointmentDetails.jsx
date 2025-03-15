@@ -5,6 +5,8 @@ import HowToRegIcon from '@mui/icons-material/HowToReg';
 import PendingActionsIcon from '@mui/icons-material/PendingActions';
 import { FormControl, InputLabel, Select, MenuItem, Box } from '@mui/material';
 import Navbar from './Navbar';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import CancelIcon from '@mui/icons-material/Cancel';
 
 const ChildElement = ({ timeline, setTimeline }) => {
 
@@ -110,7 +112,7 @@ const AppointmentDetails = () => {
     ];
 
     patientData.forEach(data => {
-        data.action = data.action == 'done' ? <HowToRegIcon sx={{ color: 'green' }} /> : <PendingActionsIcon sx={{ color: 'red' }} />
+        data.action = data.action == 'done' ? <CheckCircleIcon sx={{ color: 'green',fontSize:19 }} /> : <CancelIcon sx={{ color: 'red',fontSize:19 }} />
     })
     return (
         <>

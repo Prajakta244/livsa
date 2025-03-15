@@ -1,6 +1,7 @@
 import {useState} from 'react'
 import Livsa from '../assets/Livsa.svg'
 import { Menu,X } from 'lucide-react'
+import { useNavigate } from 'react-router-dom'
 
 const navItems = [
     { label: 'Menu1', href: '#' },
@@ -9,6 +10,7 @@ const navItems = [
     { label: 'Menu4', href: '#' }
 ]
 const Navbar = () => {
+    const navigate = useNavigate()
     const [mobileDrawerOpen,setMobileDrawerOpen] = useState(false)
     const toggelNavbar = () => setMobileDrawerOpen(!mobileDrawerOpen)
     return (
@@ -16,7 +18,7 @@ const Navbar = () => {
             <div className="container px-4 mx-auto relative text-sm">
                 <div className="flex justify-between items-center">
                     <div className="items-center flex-shrink-0">
-                        <img src={Livsa} className='h-[18px] w-15 mr-2' alt="" />
+                        <img src={Livsa} className='h-[18px] w-15 mr-2' alt="" onClick={ () => navigate('/') }/>
                     </div>
                     <ul className="hidden lg:flex ml-14 space-x-12">
                         {navItems.map((item, index) => (
